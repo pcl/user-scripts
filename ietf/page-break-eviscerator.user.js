@@ -15,3 +15,5 @@ for (var i = 0; i < count; i++) {
 
     elems[i].style.visibility = 'collapse';
 }
+
+// TODO get rid of spurious newlines that pad out the bottom of a page.
