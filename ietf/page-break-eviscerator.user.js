@@ -11,7 +11,7 @@
 var elems = document.getElementsByTagName('pre');
 var count = elems.length;
 for (var i = 0; i < count; i++) {
-    // The last element should be a span. If not, this isn't the pre
+    // The last element should be a span. If not, this is not the pre
     // we thought it was.
     if (elems[i].children.length == 0)
         continue;
@@ -24,6 +24,11 @@ for (var i = 0; i < count; i++) {
         var topSpan = anchor.nextElementSibling;
         if (topSpan.nodeName == 'SPAN' && topSpan.className == 'grey') {
 
+            // add a page marker to the right-hand gutter
+            anchor.style.float = "right";
+            anchor.className = null;
+            anchor.textContent = anchor.href.replace(/.*?(\d+)$/, 'Page $1');
+
             // strip leading whitespace
             var firstText = topSpan.nextSibling;
             if (firstText && firstText.nodeType == firstText.TEXT_NODE)
@@ -33,9 +38,6 @@ for (var i = 0; i < count; i++) {
 
             // delete the header
             topSpan.parentNode.removeChild(topSpan);
-
-
-            // TODO add style="float:right" to the A; add 'Page 2' to the text content
         }
     }
 
